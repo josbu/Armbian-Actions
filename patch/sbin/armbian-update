@@ -179,6 +179,13 @@ echo -e "${SUCCESS} 下载完成！"
 tar -xzf "${KERNEL_VERSION}-${LINUXFAMILY}.tar.gz" || error "解压失败，请检查压缩文件。"
 echo -e "${SUCCESS} 解压完成！"
 
+# 检查是否安装了 linux-libc-dev:arm64，如果存在则卸载
+if dpkg -l | grep -q "^ii  linux-libc-dev:arm64 " >/dev/null 2>&1; then
+    echo -e "${INFO} 检测到已安装: [\033[92m linux-libc-dev:arm64 \033[0m]"
+    echo -e "${STEPS} 正在卸载..."
+    apt remove -y linux-libc-dev:arm64 >/dev/null 2>&1 || exit 1
+fi
+
 # 安装文件
 for pkg in linux-libc-dev linux-headers linux-image linux-dtb; do
     echo -e "${STEPS} 正在安装: [\033[92m ${pkg} \033[0m]"
