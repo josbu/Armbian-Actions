@@ -175,12 +175,14 @@ select_mirror_site() {
         # 恢复 Debian 默认源
         if [[ -f "${debian_source_backup_file}" ]]; then
             cp -f "${debian_source_backup_file}" "${debian_source_file}"
+            rm -f "${source_backup_file}" "${source_file}"
             echo -e "${SUCCESS} 成功恢复 Debian 默认源。"
         fi
 
         # 恢复 Ubuntu 默认源
         if [[ -f "${ubuntu_source_backup_file}" ]]; then
             cp -f "${ubuntu_source_backup_file}" "${ubuntu_source_file}"
+            rm -f "${source_backup_file}" "${source_file}"
             echo -e "${SUCCESS} 成功恢复 Ubuntu 默认源。"
         fi
         exit 0
