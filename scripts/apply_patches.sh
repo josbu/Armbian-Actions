@@ -11,6 +11,7 @@ cp -f $GITHUB_WORKSPACE/patch/T4/fix-CPU-information.patch patch/kernel/archive/
 cp -f $GITHUB_WORKSPACE/patch/T4/fix-CPU-information.patch patch/kernel/archive/rockchip64-6.12/
 cp -f $GITHUB_WORKSPACE/patch/T4/t4.patch patch/kernel/archive/rockchip64-6.14/
 cp -f $GITHUB_WORKSPACE/patch/T4/t4.patch patch/kernel/archive/rockchip64-6.12/
+mv -f config/boards/nanopct4.csc config/boards/nanopct4.conf
 rm -f patch/kernel/archive/rockchip64-6.12/rk3568-bugfix-amadeus_phy_rockchip_naneng_combphy_compatible_reset_with_old_dt.patch
 sed -i 's/tag:v6\.14-rc4/tag:v6\.14-rc5/' config/sources/mainline-kernel.conf.sh
 
@@ -28,6 +29,7 @@ cp -f $GITHUB_WORKSPACE/patch/N1/fix-n1-2.patch patch/kernel/archive/meson64-6.1
 cp -f $GITHUB_WORKSPACE/patch/N1/fix-n1-1.patch patch/kernel/archive/meson64-6.13/
 cp -f $GITHUB_WORKSPACE/patch/N1/fix-n1-2.patch patch/kernel/archive/meson64-6.13/
 cp -f $GITHUB_WORKSPACE/patch/N1/aml-s9xx-box.tvb config/boards/
+mv -f config/boards/aml-s9xx-box.tvb config/boards/aml-s9xx-box.conf
 cp -f $GITHUB_WORKSPACE/patch/N1/u-boot.ext config/optional/boards/aml-s9xx-box/_packages/bsp-cli/boot/
 
 # X2 Patches
@@ -36,6 +38,7 @@ cp -f $GITHUB_WORKSPACE/patch/X2/rk3566-panther-x2.dts patch/kernel/archive/rock
 cp -f $GITHUB_WORKSPACE/patch/X2/rk3566-panther-x2.dts patch/kernel/archive/rockchip64-6.14/dt/
 cp -r $GITHUB_WORKSPACE/patch/X2/dt patch/kernel/rk35xx-vendor-6.1/
 cp -f $GITHUB_WORKSPACE/patch/X2/panther-x2.csc config/boards/
+mv -f config/boards/panther-x2.csc config/boards/panther-x2.conf
 
 # Remove '-unofficial' from the VENDOR name
 sed -i 's/Armbian-unofficial/Armbian/g' lib/functions/configuration/main-config.sh
